@@ -5,6 +5,8 @@ import org.junit.Test
 class Tester {
 
     private val ms: MethodSample = MethodSample()
+    private val nss: NullSafetySample = NullSafetySample()
+
 
     @Test
     fun custom(){
@@ -37,6 +39,13 @@ class Tester {
         val result = ms.withReceiverLambda(5, 4)
         println(result)
 
+    }
+
+
+    @Test
+    fun nullSafety() {
+        nss.safetyInvoke()
+//        nss.noneSafetyInvoke()
     }
 
 
