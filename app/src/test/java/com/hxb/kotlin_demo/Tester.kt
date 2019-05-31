@@ -10,6 +10,10 @@ class Tester {
 
     @Test
     fun custom(){
+        val name="aaa".also {
+            println("also perform")
+        }
+
 
     }
 
@@ -44,9 +48,19 @@ class Tester {
 
     @Test
     fun nullSafety() {
-        nss.safetyInvoke()
+//        nss.safetyInvoke()
 //        nss.noneSafetyInvoke()
+//        nss.elvis()
+        nss.safetyTypeConvert()
     }
+
+
+    @Test
+    fun classInitTest(){
+        ClassInitSample(1, "k", true)
+
+    }
+
 
 
 }

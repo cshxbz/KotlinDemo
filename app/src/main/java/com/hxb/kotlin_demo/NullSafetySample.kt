@@ -42,7 +42,24 @@ class NullSafetySample {
      * elvis操作符
      */
     public fun elvis(){
+        var str: String? = "abcd"
+        str = null
+        //如果str不为null,取自身的值,否则取-1
+        val len = str?.length ?: -1
+        println(len)
+    }
 
+
+    /**
+     * 安全的类型转换
+     */
+    public fun safetyTypeConvert(){
+        var any: Any? = 60
+//        var any: Any = "k"
+
+        //如果any是Int类型,就取其自身的值，否则取null值
+        val a: Int? = any as? Int?
+        println(a)
     }
 
 }
