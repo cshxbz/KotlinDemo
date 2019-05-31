@@ -6,13 +6,15 @@ class Tester {
 
     private val ms: MethodSample = MethodSample()
     private val nss: NullSafetySample = NullSafetySample()
-
+    private val fs: FieldSample = FieldSample()
 
     @Test
     fun custom(){
         val name="aaa".also {
             println("also perform")
         }
+
+
 
 
     }
@@ -62,5 +64,21 @@ class Tester {
     }
 
 
+    @Test
+    fun overrideTest(){
+        val d = D()
+        d.f()
+    }
+
+
+    @Test
+    fun fieldTest(){
+        fs.propertyA=10
+        println(fs.propertyA)
+
+        fs.propertyD="init completed"
+        println(fs.propertyD)
+
+    }
 
 }
