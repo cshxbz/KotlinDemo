@@ -81,4 +81,22 @@ class Tester {
 
     }
 
+
+    @Test
+    fun collectionTest(){
+        val readOnlyList = listOf("a", "b", "c")
+        val mutableList = mutableListOf("d", "e", "f")
+
+        mutableList.add("x")
+
+    }
+
+
+    @Test
+    fun innerClassTest(){
+        val nested: InnerClassSample.Nested = InnerClassSample.Nested()
+
+    }
+
+
 }

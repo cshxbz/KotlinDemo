@@ -30,6 +30,7 @@ class FieldSample {
 
     /**
      *  延迟初始化属性
+     *  如果没有初始化就使用此属性，会抛异常
      */
     lateinit var propertyD: String
 
