@@ -1,5 +1,6 @@
 package com.hxb.kotlin_demo
 
+import com.hxb.kotlin_demo.bean.Person
 import org.junit.Test
 
 class Tester {
@@ -22,7 +23,7 @@ class Tester {
     @Test
     fun functionInvoke(){
         //传入lambda表达式作为参数
-        ms.withFunParamFunction(i = 10, str = "bar", action = { i, str ->
+        ms.withFunParamFunction(i = 10, str = "receiverPersonObj", action = { i, str ->
             "$i-$str"
         })
 
@@ -83,7 +84,7 @@ class Tester {
 
 
     @Test
-    fun collectionTest(){
+    fun collection(){
         val readOnlyList = listOf("a", "b", "c")
         val mutableList = mutableListOf("d", "e", "f")
 
@@ -93,9 +94,33 @@ class Tester {
 
 
     @Test
-    fun innerClassTest(){
+    fun innerClass(){
         val nested: InnerClassSample.Nested = InnerClassSample.Nested()
+    }
 
+
+    @Test
+    fun objectExpressionTest(){
+        val oes = ObjectExpressionSample()
+
+        /**
+         * 传递一个匿名内部类对象作为参数
+         */
+        oes.receiverPersonObj(object : Person("Panzer"){
+            override fun walk() {
+                println("$name ex walk")
+            }
+
+            override fun eat() {
+                println("$name ex eat")
+            }
+        })
+    }
+
+
+    @Test
+    fun objectDeclare(){
+        CustomObject.functionA()
     }
 
 
