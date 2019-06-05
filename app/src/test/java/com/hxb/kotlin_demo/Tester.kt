@@ -124,4 +124,18 @@ class Tester {
     }
 
 
+    @Test
+    fun delegation() {
+        val subPart = SubPartA()
+
+        val mainPart = MainPart(subPart)
+        mainPart.f1()
+        mainPart.f2()
+        println(mainPart.p1)
+
+        subPart.f1()
+
+    }
+
+
 }
