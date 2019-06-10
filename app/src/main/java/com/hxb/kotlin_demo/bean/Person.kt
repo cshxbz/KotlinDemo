@@ -28,7 +28,7 @@ open class Person constructor(var name: String) {
 
 
     /**
-     * 非data类如果要使用结构声明，需要有componentN方法
+     * 非data类如果要使用解构声明，需要有componentN方法
      */
     operator fun component1(): String {
         return this.name

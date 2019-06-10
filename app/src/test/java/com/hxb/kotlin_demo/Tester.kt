@@ -133,4 +133,13 @@ class Tester {
     }
 
 
+    @Test
+    fun companionObj() {
+        //访问伴生对象的成员
+        CompanionObjSample.foo()
+        //
+        val companion = CompanionObjSample.Companion
+    }
+
+
 }
