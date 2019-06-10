@@ -11,12 +11,7 @@ class Tester {
 
     @Test
     fun custom(){
-        val name="aaa".also {
-            println("also perform")
-        }
-
-
-
+        DestructuringSample().test()
 
     }
 

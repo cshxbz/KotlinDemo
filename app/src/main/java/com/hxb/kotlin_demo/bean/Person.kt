@@ -10,7 +10,7 @@ open class Person constructor(var name: String) {
     }
 
     public constructor(name: String, age: Int) : this(name) {
-        this.age=age
+        this.age = age
     }
 
     public constructor(name: String, age: Int, weight: Float) : this(name, age) {
@@ -18,12 +18,24 @@ open class Person constructor(var name: String) {
     }
 
 
-    public open fun walk(){
+    public open fun walk() {
         println("Person walk")
     }
 
     public open fun eat() {
         println("Person eat")
+    }
+
+
+    /**
+     * 非data类如果要使用结构声明，需要有componentN方法
+     */
+    operator fun component1(): String {
+        return this.name
+    }
+
+    operator fun component2(): Int? {
+        return this.age
     }
 
 }
