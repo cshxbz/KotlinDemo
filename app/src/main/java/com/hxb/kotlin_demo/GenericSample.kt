@@ -17,12 +17,32 @@ interface Comparable<in T>{
 }
 
 
+interface Tag<T>{
+    fun getContent(): T
+    fun setContent(content: T)
+}
+
+
+fun genericTest1(tag: Tag<String>) {
+    val other: Tag<out Any> = tag
+
+    //编译出错误
+//    other.setContent(1)
+
+    other.getContent()
+}
+
+fun genericTest2(tag: Tag<Number>) {
+    val other: Tag<in Int> = tag
+    other.setContent(10)
+    other.getContent()
+}
+
 fun genericOutTest(strs: Source<String>) {
 
     val objs: Source<Any> = strs
 
 }
-
 
 fun genericInTest(x: Comparable<Number>) {
 
