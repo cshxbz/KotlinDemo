@@ -142,4 +142,15 @@ class Tester {
     }
 
 
+    @Test
+    fun collectionsTest() {
+        val cs = CollectionSample()
+//        cs.copyAndConversion()
+//        cs.operationFilter()
+//        cs.operationMap()
+//        cs.operationAssociation()
+        cs.traverseWay()
+    }
+
+
 }
