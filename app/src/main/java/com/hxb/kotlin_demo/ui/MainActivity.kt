@@ -17,8 +17,14 @@ class MainActivity : AppCompatActivity() {
          * 导入 kotlinx.android.synthetic.main.＜布局＞.* 后，
          * 可以免去 findViewById, 可直接访问布局中的控件，使用控件的id来访问
          */
-        tv_text.setOnClickListener { v: View ->
-            println("clicked ${(v as TextView).text}")
+        tv_text.setOnClickListener {
+            var v: TextView = it as TextView
+//            println("clicked ${(v as TextView).text}")
+
+            CoroutineSample.test()
         }
+
+
+
     }
 }
