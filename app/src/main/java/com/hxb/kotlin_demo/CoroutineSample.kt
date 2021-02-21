@@ -1,4 +1,4 @@
-package com.hxb.kotlin_demo.ui
+package com.hxb.kotlin_demo
 
 import kotlinx.coroutines.*
 
@@ -8,7 +8,8 @@ class CoroutineSample {
         fun test() {
             GlobalScope.launch(Dispatchers.Main) {
                 println("start ! ${getThreadName()}")
-                val work1Result = execWork1()
+                val work1Result =
+                    execWork1()
                 println("end ! ${getThreadName()}--$work1Result")
             }
         }
