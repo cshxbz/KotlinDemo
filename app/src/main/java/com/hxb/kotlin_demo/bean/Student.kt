@@ -6,7 +6,7 @@ open class Student constructor(name: String, var stNo: String) : Person(name) {
         println("Student init")
     }
 
-    public constructor(name: String, age: Int, weight: Float, stNo: String) : this(name, stNo) {
+    constructor(name: String, age: Int, weight: Float, stNo: String) : this(name, stNo) {
         super.age=age
         super.weight=weight
     }

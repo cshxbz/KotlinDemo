@@ -1,5 +1,7 @@
 package com.hxb.kotlin_demo
 
+import com.hxb.kotlin_demo.bean.Student
+import com.hxb.kotlin_demo.extensions.fight
 import kotlinx.coroutines.*
 
 class CoroutineSample {
@@ -8,8 +10,7 @@ class CoroutineSample {
         fun test() {
             GlobalScope.launch(Dispatchers.Main) {
                 println("start ! ${getThreadName()}")
-                val work1Result =
-                    execWork1()
+                val work1Result = execWork1()
                 println("end ! ${getThreadName()}--$work1Result")
             }
         }

@@ -1,6 +1,8 @@
 package com.hxb.kotlin_demo
 
 import com.hxb.kotlin_demo.bean.Person
+import com.hxb.kotlin_demo.bean.Student
+import com.hxb.kotlin_demo.extensions.*
 import org.junit.Test
 
 class Tester {
@@ -152,5 +154,19 @@ class Tester {
         cs.traverseWay()
     }
 
+
+    /**
+     * 扩展（extensions）
+     */
+    @Test
+    fun extensionTest(){
+        val st = Student(name = "ryu", age = 28, weight = 70.0f, stNo = "001")
+        /**
+         * 调用[Student]类的扩展函数
+         */
+        st.fight()
+        st.talk()
+
+    }
 
 }
