@@ -169,4 +169,10 @@ class Tester {
 
     }
 
+
+    @Test
+    fun inlineFunctionTest() {
+        invokeLoop()
+    }
+
 }
