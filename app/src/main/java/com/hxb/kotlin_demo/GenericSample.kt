@@ -73,6 +73,6 @@ class Room<P : Person>{
  * 星投影
  */
 fun genericConstraintsTest() {
-    val room: Room<Student> = Room()
-    room.resident = Student("eri", "x10")
+    val room: Room<*> = Room<Student>()
+    val resident = room.resident
 }
