@@ -1,18 +1,12 @@
 package com.hxb.kotlin_demo
 
-import com.hxb.kotlin_demo.bean.Student
-import com.hxb.kotlin_demo.extensions.fight
 import kotlinx.coroutines.*
 
 class CoroutineSample {
 
     companion object {
         fun test() {
-            GlobalScope.launch(Dispatchers.Main) {
-                println("start ! ${getThreadName()}")
-                val work1Result = execWork1()
-                println("end ! ${getThreadName()}--$work1Result")
-            }
+            asyncTest()
         }
 
         private suspend fun execWork1(): String {
@@ -31,6 +25,43 @@ class CoroutineSample {
         private fun getThreadName(): String {
             return Thread.currentThread().name
         }
+
+
+        private fun asyncTest() {
+            GlobalScope.launch(Dispatchers.Default) {
+
+                val async1 = async(Dispatchers.IO) {
+                    var lastIndex = 0
+                    repeat(10) {
+                        delay(200)
+                        println("async1:${it}")
+                        lastIndex = it
+                    }
+                    lastIndex
+                }
+
+                val async2 = async(Dispatchers.IO) {
+                    var lastIndex = 0
+                    repeat(8) {
+                        delay(300)
+                        println("async2:${it}")
+                        lastIndex = it
+                    }
+                    lastIndex
+                }
+
+
+                println("start wait")
+                val result1 = async1.await()
+                println("async1 end----------------${result1}")
+                val result2 = async2.await()
+                println("async2 end----------------${result2}")
+
+            }
+
+        }
+
+
 
     }
 
