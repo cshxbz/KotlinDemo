@@ -1,12 +1,13 @@
 package com.hxb.kotlin_demo.asynctask
 
+import androidx.lifecycle.LifecycleOwner
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class CoroutineAsyncSample {
 
-    private fun perform1() {
+    private fun perform1(lo: LifecycleOwner) {
         GlobalScope.launch(Dispatchers.Main) {
             showLoading()
 
