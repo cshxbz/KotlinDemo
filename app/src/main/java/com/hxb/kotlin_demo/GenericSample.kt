@@ -58,7 +58,6 @@ fun typeProjectionsOut(tag: Tag<String>) {
 fun typeProjectionsIn(tag: Tag<Number>) {
     val other: Tag<in Int> = tag
     other.setContent(10)
-    other.getContent()
 }
 
 

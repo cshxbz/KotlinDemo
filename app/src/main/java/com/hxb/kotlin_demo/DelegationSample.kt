@@ -10,7 +10,7 @@ interface ISubPart {
 
 
 class SubPartA : ISubPart {
-    override var p1: Int=100
+    override var p1: Int = 100
 
     override fun f1() {
         println("SubPartA f1")

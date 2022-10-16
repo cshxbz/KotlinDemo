@@ -15,7 +15,7 @@ class InnerClassSample {
      */
     class Nested {
         fun foo(){
-            println("Nested foo")
+//            println("Nested foo $propertyA")
         }
     }
 

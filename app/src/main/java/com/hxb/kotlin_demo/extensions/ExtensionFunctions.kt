@@ -15,6 +15,22 @@ fun Student.fight(){
     println("student fight--$stNo--$name--$weight")
 }
 
-fun Student.talk(){
+fun Student.talk() {
     println("student talk--$stNo--$name--$weight")
+}
+
+
+fun Student?.walk() {
+    println("student talk--${this?.stNo}--${this?.name}--${this?.weight}")
+}
+
+
+fun <T : Any> T.getClassName():String {
+    val clazz = this.javaClass
+    return ">> ${clazz.name}"
+}
+
+fun <T> T.doSomeThing(block: T.() -> Unit): T {
+    block.invoke(this)
+    return this
 }
