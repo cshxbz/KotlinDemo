@@ -6,15 +6,31 @@ class CoroutineSample {
 
     companion object {
         fun test() {
-            asyncTest()
+            GlobalScope.launch(Dispatchers.Main) {
+
+                val part1Result = withContext(Dispatchers.IO) {
+                    Thread.sleep(2000)
+                    return@withContext "part 1 result"
+//                    return@withContext 100
+                }
+
+                val part2Result = withContext(Dispatchers.Default) {
+                    Thread.sleep(2000)
+                    return@withContext "part 2 result"
+                }
+
+
+
+            }
         }
+
+
 
         private suspend fun execWork1(): String {
             var result: String
             withContext(Dispatchers.IO) {
                 println("work1 start ! ${getThreadName()}")
                 delay(3000L)
-//                Thread.sleep(3000L)
                 println("work1 finish ! ${getThreadName()}")
                 result = "apple"
             }

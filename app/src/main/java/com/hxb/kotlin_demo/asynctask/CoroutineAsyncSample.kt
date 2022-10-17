@@ -54,7 +54,40 @@ class CoroutineAsyncSample {
 
 
     private fun perform2() {
+        GlobalScope.launch(Dispatchers.Main) {
+            showLoading()
 
+            //请求接口1
+            val req1Result = doRequest1(params = "request1_params")
+            if (req1Result is TaskResult.Fail) {
+                dismissLoading()
+                return@launch
+            }
+
+            val req1Data = (req1Result as TaskResult.Success).data
+
+            //请求接口3
+            val req3Result = doRequest3(params = req1Data)
+            if (req3Result is TaskResult.Fail) {
+                dismissLoading()
+                return@launch
+            }
+
+            val req3Data = (req3Result as TaskResult.Success).data
+
+            //请求接口4
+            val req4Result = doRequest4(params = req3Data)
+            if (req4Result is TaskResult.Fail) {
+                dismissLoading()
+                return@launch
+            }
+
+            val req4Data = (req4Result as TaskResult.Success).data
+            println("流程结束")
+
+
+            dismissLoading()
+        }
 
     }
 

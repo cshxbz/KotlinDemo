@@ -4,6 +4,8 @@ import android.os.Handler
 import android.os.Looper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 
 private val handler by lazy {
@@ -12,6 +14,7 @@ private val handler by lazy {
 
 fun mockRequest(requestName: String, params: String, callback: TaskCallback) {
     Thread {
+        Thread.sleep(1000)
         handler.post {
             val success = true
             if (success) {
@@ -26,6 +29,36 @@ fun mockRequest(requestName: String, params: String, callback: TaskCallback) {
 
     }.start()
 }
+
+
+/**
+ * 将基于回调的异步调用包装成挂起方法的形式
+ */
+suspend fun mockRequestWrapCallback(requestName: String, params: String): TaskResult {
+    return withContext(Dispatchers.IO) {
+        return@withContext suspendCoroutine {
+
+            mockRequest(requestName,params, object : TaskCallback {
+                override fun onSuccess(data: String, msg: String) {
+                    it.resume(
+                        TaskResult.Success(
+                            data = "this is $requestName success result",
+                            msg = "$requestName success"
+                        )
+                    )
+                }
+
+                override fun onFail(msg: String) {
+                    it.resume(TaskResult.Fail(msg = "$requestName fail"))
+                }
+            })
+        }
+
+
+    }
+
+}
+
 
 
 suspend fun mockRequestEx(requestName: String, params: String): TaskResult {
@@ -53,12 +86,11 @@ fun mockSaveDataToLocal(callback: TaskCallback) {
 
 
 fun showLoading(){
-
+    println("mock showLoading")
 }
 
 fun dismissLoading() {
-
-
+    println("mock dismissLoading")
 }
 
 
