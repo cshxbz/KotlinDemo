@@ -3,9 +3,11 @@
 buildscript {
     ext.kotlin_version = '1.8.22'
     repositories {
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/google' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
         google()
         mavenCentral()
-        
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.3.1'
@@ -17,6 +19,8 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/google' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
         google()
         mavenCentral()
     }
